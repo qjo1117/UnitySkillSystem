@@ -59,6 +59,13 @@ public class Skill : MonoBehaviour
 		_skillLink.Add(p_type);
 	}
 
+	[EnumAction(typeof(Define.Skill))]
+	public void _On_PointUp(int p_click)
+	{
+		Managers.Game._skill.PointUp((Define.Skill)p_click);
+		Managers.Log.Log(string.Format("Skill : {0} / SkillPoint : {1}", _type, _skillPoint));
+	}
+
 	public void DelLink(int p_type)
 	{
 		DelLink((Define.Skill)p_type);
