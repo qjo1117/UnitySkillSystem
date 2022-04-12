@@ -28,15 +28,13 @@ public class ResourceManager
     public GameObject NewPrefab(string path, Transform parent = null)
     {
         GameObject original = Load<GameObject>($"Prefabs/{path}");
-        if (original == null)
-        {
+        if (original == null) {
             Debug.Log($"Failed to Load prefab : {path}");
             return null;
         }
 
         // Poolable을 가지고 있으면 PoolManager에 있는 녀석이다.
-        if (original.GetComponent<Poolable>() != null)
-        {
+        if (original.GetComponent<Poolable>() != null) {
             return Managers.Pool.Pop(original, parent).gameObject;
         }
 
@@ -54,8 +52,7 @@ public class ResourceManager
 
         // 만약에 풀링이 필요한 아이라면 -> 풀링 매니저한테 맡겨진다.
         Poolable poolable = go.GetComponent<Poolable>();
-        if (poolable != null)
-        {
+        if (poolable != null) {
             Managers.Pool.Push(poolable);
             return;
         }

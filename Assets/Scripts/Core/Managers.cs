@@ -35,17 +35,15 @@ public class Managers : MonoBehaviour
 			if (go == null) {
 				go = new GameObject { name = "@Managers" };
 				go.AddComponent<Managers>();
-			}
 
-			// 昏力 规瘤
-			DontDestroyOnLoad(go);
+				// 昏力 规瘤
+				DontDestroyOnLoad(go);
+			}
 			_instance = go.GetComponent<Managers>();
 
-			_instance._pool.Init();
 			_instance._log.Init();
+			_instance._pool.Init();
 
-
-			_instance._game.Init();
 		}
 	}
 
