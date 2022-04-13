@@ -47,7 +47,6 @@ public class Skill : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEnd
 		_canvas = GameObject.Find("SkillHolder").GetComponent<Canvas>();
 
 		_button.image.sprite = Managers.Game._skill._sprite[(int)_type];
-		// TODO : 불안하면 예외처리하는게 정상이지만 귀찮다.
 	}
 
 	public void SetUnLock()
