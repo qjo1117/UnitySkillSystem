@@ -25,6 +25,27 @@ public class ResourceManager
         return Resources.Load<T>(path);
     }
 
+    public T[] LoadAll<T>(string path) where T : Object
+    {
+        if (typeof(T) == typeof(GameObject))
+        {
+            // ObjectPoolManager에 있는 녀석인지 확인한다.
+            string name = path;
+            int index = name.LastIndexOf('/');
+            if (index >= 0)
+            {
+                name = name.Substring(index + 1);
+            }
+            GameObject go = Managers.Pool.GetOriginal(name);
+            if (go != null)
+            {
+                return go as T[];
+            }
+        }
+
+        return Resources.LoadAll<T>(path);
+    }
+
     public GameObject NewPrefab(string path, Transform parent = null)
     {
         GameObject original = Load<GameObject>($"Prefabs/{path}");

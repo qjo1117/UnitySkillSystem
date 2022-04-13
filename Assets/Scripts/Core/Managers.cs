@@ -7,6 +7,7 @@ public class Managers : MonoBehaviour
 	private static Managers _instance = null;
 	public static Managers Instance { get { Init(); return _instance; } }
 
+	DataManager _data = new DataManager();
 	ResourceManager _resource = new ResourceManager();
 	PoolManager _pool = new PoolManager();
 	SceneManagerEx _scene = new SceneManagerEx();
@@ -14,6 +15,7 @@ public class Managers : MonoBehaviour
 	
 	GameManager _game = new GameManager();
 
+	public static DataManager Data { get { return Instance._data; } }
 	public static ResourceManager Resource { get { return Instance._resource; } }
 	public static PoolManager Pool { get { return Instance._pool; } }
 	public static SceneManagerEx Scene { get { return Instance._scene; } }
@@ -42,6 +44,7 @@ public class Managers : MonoBehaviour
 			_instance = go.GetComponent<Managers>();
 
 			_instance._log.Init();
+			_instance._data.Init();
 			_instance._pool.Init();
 
 		}

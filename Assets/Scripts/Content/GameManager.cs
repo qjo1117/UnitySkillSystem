@@ -14,12 +14,11 @@ public class GameManager
 	{
 		_skill = GameObject.FindObjectOfType<SkillManager>();
 		_skill.Init();
-
+		_skill.SetLinkTransform();      // TODO : Problem 테스트로 만든거고 지워야함
 	}
 
 	public void Update()
 	{
-		_skill.SetLinkTransform();		// TODO : Problem 테스트로 만든거고 지워야함
 	}
 
 
